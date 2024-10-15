@@ -10,7 +10,7 @@ const RootLayout = ({ isAuthenticated } : RootLayoutProps) => {
       {!isAuthenticated ? (
       <Navigate to="/sign-up" />
       ) : (
-        <section className="flex flex-col p-10 border-2 border-white rounded">
+        <section className="">
           <Outlet />
         </section>
       )}

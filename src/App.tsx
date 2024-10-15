@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import './App.css';
 
 import Form from './_auth/form/SigninForm';
-import { Home } from './_root/pages';
+import { Home, Edu } from './_root/pages';
 import AuthLayout from './_auth/AuthLayout';
 import RootLayout from './_root/RootLayout';
 import { useEffect, useState } from 'react';
@@ -39,7 +39,7 @@ function App() {
   }
 
   return (
-    <main className='flex h-screen items-center justify-center'>
+    <main>
       <Routes>
         {/* public route */}
         <Route element={<AuthLayout isAuthenticated={isAuthenticated} />}>
@@ -49,6 +49,7 @@ function App() {
         {/* pivate route */}
         <Route element={<RootLayout isAuthenticated={isAuthenticated} />}>
           <Route index element={<Home user={user} />} />
+          <Route path='/Edu' element={<Edu/>} />
         </Route>
       </Routes>
     </main>

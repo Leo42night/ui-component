@@ -7,6 +7,7 @@ const AuthLayout = ({ isAuthenticated }: AuthLayoutProps) => {
   
 
   return (
+    <main className='flex h-screen items-center justify-center'>
     <>
       {isAuthenticated ? (
         <Navigate to ="/" />
@@ -22,6 +23,7 @@ const AuthLayout = ({ isAuthenticated }: AuthLayoutProps) => {
         </>
       )} 
     </>
+      </main>
   )
 }
 
