@@ -18,11 +18,11 @@ export const Home: React.FC<HomeProps> = ({ user }) => {
   const [error, setError] = useState<string | null>(null); // State to manage error messages
 
   async function handleLogout() {
-     setLoading(true); // Set loading state to true
+    setLoading(true); // Set loading state to true
     setError(null); // Clear any previous errors
 
     try {
-      await account.deleteSession('current');
+      await account.deleteSession("current");
     } catch (err) {
       console.error(err);
       setError("Logout failed. Please try again."); // Set error message
@@ -32,25 +32,28 @@ export const Home: React.FC<HomeProps> = ({ user }) => {
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col items-center justify-center gap-3 h-screen">
+      {" "}
+      {/* Center items vertically and horizontally */}
       {user ? (
         <>
-          <div>Selamat Datang, {user.name}! 😁</div>
-          <div>Email: {user.email} 📧</div>
-          <Button 
-            onClick={handleLogout} 
-            className="bg-red text-black text-lg text-bold hover:border-double hover:border-4 hover:border-white rounded"
+          <div className="text-center">Selamat Datang, {user.name}! 😁</div>
+          <div className="text-center">Email: {user.email} 📧</div>
+          <Button
+            onClick={handleLogout}
+            className="bg-red text-black text-lg font-bold hover:border-double hover:border-4 hover:border-white rounded" // Use 'font-bold' for consistency
             disabled={loading} // Disable button while loading
           >
-            {loading ? 'Logging out...' : 'Logout'}
+            {loading ? "Logging out..." : "Logout"}
           </Button>
         </>
       ) : (
-        <div>Please log in to see your profile.</div> // Fallback message for when user is null
+        <div className="text-center">Please log in to see your profile.</div> // Centered fallback message
       )}
-      {error && <div className="text-red-600">{error}</div>} {/* Display error message if any */}
+      {error && <div className="text-red-600 text-center">{error}</div>}{" "}
+      {/* Center error message */}
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
